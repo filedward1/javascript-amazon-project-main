@@ -52,11 +52,11 @@ export function removeFromCart(productId) {
   saveToStorage();
 }
 
-export function updateDeliveryOption(productID, deliveryOptionID) {
+export function updateDeliveryOption(productId, deliveryOptionID) {
     let matchingItem;
 
     cart.forEach((cartItem) => {
-        if (cartItem.productId === cartItem.productId) {
+        if (productId === cartItem.productId) {
           matchingItem = cartItem;
         }
     });
