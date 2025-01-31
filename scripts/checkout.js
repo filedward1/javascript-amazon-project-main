@@ -9,13 +9,22 @@ import { loadCart } from "../data/cart.js";
 async function loadPage() { // same as new Promise((resolve) => {console.log('load page');})
     // console.log('load page');
 
-    await loadProductsFetch(); // same as loadProductsFetch().then(() => {}) 
+    try {
+        //throw 'error1';
+
+        await loadProductsFetch(); // same as loadProductsFetch().then(() => {}) 
     
-    const value = await new Promise((resolve) => { 
-        loadCart(() => {
-            resolve('value3');
+        const value = await new Promise((resolve, reject) => { 
+            // throw 'error2';
+            loadCart(() => { 
+                //reject('error3'); // this code runs in the future
+                resolve('value3');
+            });
         });
-    });
+
+    } catch (error) { // same as .catch((error) => {})
+        console.log('Unexpected error. Please try again later.');
+    }
 
     renderOrderSummary();
     renderPaymentSummary();
