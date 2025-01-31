@@ -43,6 +43,8 @@ products.forEach((product) => {
               <option value="10">10</option>
             </select>
           </div>
+          
+          ${[product.extraInfoHTML()]}
 
           <div class="product-spacer"></div>
 
@@ -56,8 +58,6 @@ products.forEach((product) => {
           </button>
         </div>`;
 });
-
-console.log(productsHTML);
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
